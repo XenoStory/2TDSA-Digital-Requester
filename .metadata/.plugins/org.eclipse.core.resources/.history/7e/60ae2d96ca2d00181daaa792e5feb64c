@@ -1,0 +1,19 @@
+package br.com.fiap.repository;
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
+
+import br.com.fiap.to.CandidatoTO;
+
+public class CandidatoRepository 
+{
+	public void cadastrar(CandidatoTO to)
+	{
+
+		Client client = Client.create();
+		
+		// Configura a URL para enviar a requisição
+		WebResource resource = 
+				client.resource("http://localhost:8080/06-WS-Restful-Server/rest/candidato/");
+	}
+}

@@ -1,0 +1,9 @@
+package br.com.fiap.repository;
+
+public class CandidatoRepository 
+{
+	public void cadastrar(CandidatoTO to)
+	{
+		E ae guys
+	}
+}

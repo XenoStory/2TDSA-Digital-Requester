@@ -1,0 +1,32 @@
+package br.com.fiap.view;
+
+import java.util.Scanner;
+
+import javax.ws.rs.core.MediaType;
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+
+import br.com.fiap.to.CandidatoTO;
+
+public class CadastrarView 
+{
+	public static void main(String[] args) 
+	{	
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Nome: ");
+		String nome = sc.next() + sc.nextLine();
+		System.out.println("Apelido: ");
+		String apelido = sc.next() + sc.nextLine();
+		System.out.println("Número: ");
+		int numero = sc.nextInt();
+		System.out.println("Ficha limpa: ");
+		boolean fichaLimpa = sc.nextBoolean();
+		
+		CandidatoTO to = new CandidatoTO(nome, apelido, fichaLimpa, numero);
+		
+		sc.close();
+	}
+}

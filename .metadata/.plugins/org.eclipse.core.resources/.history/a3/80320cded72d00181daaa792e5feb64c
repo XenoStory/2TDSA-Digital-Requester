@@ -1,0 +1,31 @@
+package br.com.fiap.view;
+
+import java.util.Scanner;
+
+import br.com.fiap.repository.CandidatoRepository;
+
+public class AtualizarView 
+{
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Nome: ");
+		String nome = scan.next() + scan.nextLine();
+		System.out.println("Apelido: ");
+		String apelido = scan.next() + scan.nextLine();
+		System.out.println("Número: ");
+		int numero = scan.nextInt();
+		System.out.println("Ficha limpa: ");
+		boolean ficha = scan.nextBoolean();
+		
+		try
+		{
+			CandidatoRepository respository = new CandidatoRepository();
+		}
+		catch(Exception e)
+		{
+			System.err.println(e.getMessage());
+		}
+		scan.close();
+	}
+}

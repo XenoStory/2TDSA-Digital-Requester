@@ -1,0 +1,14 @@
+package br.com.fiap.view;
+
+import com.sun.jersey.api.client.Client;
+
+public class CadastrarView 
+{
+	public static void main(String[] args) 
+	{
+		Client client = Client.create();
+		
+		WebResource resource = 
+				client.resource("http://localhost:8080/06-WS-Restful-Server/rest/candidato/");
+	}
+}

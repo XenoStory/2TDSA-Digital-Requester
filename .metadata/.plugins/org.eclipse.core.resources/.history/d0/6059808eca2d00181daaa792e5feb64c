@@ -1,0 +1,52 @@
+package br.com.fiap.view;
+
+import java.util.Scanner;
+
+import javax.ws.rs.core.MediaType;
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+
+import br.com.fiap.to.CandidatoTO;
+
+public class CadastrarView 
+{
+	public static void main(String[] args) 
+	{
+		Client client = Client.create();
+		
+		// Configura a URL para enviar a requisição
+		WebResource resource = 
+				client.resource("http://localhost:8080/06-WS-Restful-Server/rest/candidato/");
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Nome: ");
+		String nome = sc.next() + sc.nextLine();
+		System.out.println("Apelido: ");
+		String apelido = sc.next() + sc.nextLine();
+		System.out.println("Número: ");
+		int numero = sc.nextInt();
+		System.out.println("Ficha limpa: ");
+		boolean fichaLimpa = sc.nextBoolean();
+		
+		CandidatoTO to = new CandidatoTO(nome, apelido, fichaLimpa, numero);
+		
+		sc.close();
+		
+		// Formato dos dados que serão enviados (JSON)
+		ClientResponse response  = resource.type(MediaType.APPLICATION_JSON)
+		// Faz um post com os valores do candidato
+		.post(ClientResponse.class, to);
+		
+		if(response.getStatus() == 201)
+		{
+			System.out.println("Candidato cadastrado com sucesso, meus amigos!");
+		}
+		else
+		{
+			System.out.println("Erro ao cadastrar!");
+		}
+	}
+}

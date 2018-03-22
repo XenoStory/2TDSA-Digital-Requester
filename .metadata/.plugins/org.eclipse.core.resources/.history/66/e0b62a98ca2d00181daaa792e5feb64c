@@ -1,0 +1,37 @@
+package br.com.fiap.repository;
+
+import javax.ws.rs.core.MediaType;
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+
+import br.com.fiap.to.CandidatoTO;
+
+public class CandidatoRepository 
+{
+	public void cadastrar(CandidatoTO to)
+	{
+
+		Client client = Client.create();
+		
+		// Configura a URL para enviar a requisição
+		WebResource resource = 
+				client.resource("http://localhost:8080/06-WS-Restful-Server/rest/candidato/");
+		
+		// Formato dos dados que serão enviados (JSON)
+		ClientResponse response  = resource.type(MediaType.APPLICATION_JSON)
+		// Faz um post com os valores do candidato
+		.post(ClientResponse.class, to);
+		
+		if(response.getStatus() == 201)
+		{
+			System.out.println("Candidato cadastrado com sucesso, meus amigos!");
+		}
+		else
+		{
+			System.out.println("Erro ao cadastrar!");
+		}
+	}
+	}
+}
